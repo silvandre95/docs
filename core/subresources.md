@@ -109,6 +109,7 @@ To make things work, API Platform needs information about how to retrieve the `A
 the `Question`, this is done by configuring the `uriVariables`:
 
 <code-selector>
+
 ```php
 <?php
 // api/src/Entity/Answer.php
@@ -121,18 +122,18 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity]
 #[ApiResource]
 #[ApiResource(
-    uriTemplate: '/questions/{id}/answer', 
+    uriTemplate: '/questions/{id}/answer',
     uriVariables: [
         'id' => new Link(
             fromClass: Question::class,
             fromProperty: 'answer'
         )
-    ], 
+    ],
     operations: [new Get()]
 )]
 class Answer
 {
-    // ...
+// ...
 }
 ```
 
@@ -228,8 +229,8 @@ resources:
 Note that in this example, we declared an association using Doctrine only between Employee and Company using a ManyToOne. There is no inverse association hence the use of `toProperty` in the URI Variables definition.
 
 The following declares a few subresources:
-    - `/companies/{companyId}/employees/{id}` - get an employee belonging to a company
-    - `/companies/{companyId}/employees` - get the company employee's
+- `/companies/{companyId}/employees/{id}` - get an employee belonging to a company
+- `/companies/{companyId}/employees` - get the company employee's
 
 ```php
 <?php
